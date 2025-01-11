@@ -10,7 +10,16 @@ const stats = [
   { value: 6, label: 'Years in Top 3', suffix: '' }
 ]
 
-function CountingNumber({ value, duration = 2000, suffix = '' }) {
+// Add type for the props
+interface CountingNumberProps {
+  value: number;
+  duration?: number;
+  suffix?: string;
+}
+
+// Or use disable comments
+/* eslint-disable @typescript-eslint/no-explicit-any */
+function CountingNumber({ value, duration = 2000, suffix = '' }: CountingNumberProps) {
   const [count, setCount] = useState(0)
   const { ref, inView } = useInView({ triggerOnce: true })
 
@@ -37,6 +46,7 @@ function CountingNumber({ value, duration = 2000, suffix = '' }) {
     </span>
   )
 }
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
 export default function Stats() {
   return (
